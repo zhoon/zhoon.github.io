@@ -1,4 +1,4 @@
-blog.github.com
+zhoon.github.io
 ===============
 
 这是一个用jekyll和github pages来搭建的个人小博客。
