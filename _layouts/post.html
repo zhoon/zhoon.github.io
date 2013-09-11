@@ -6,7 +6,7 @@
 		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
 		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>zhoon's blog</title>
+		<title>{{ page.title }}</title>
 		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
 	</head>
@@ -15,6 +15,8 @@
 		<div class="blog-main">
 			<!-- blog content-->
 			<div class="blog-content blog-post">
+				<h1>{{ page.title }}</h1>
+				<p class="date">{{ page.date | date: "%Y年 %m月 %d日" }}</p>
 				{{ content }}
 			</div>
 			<!-- blog sidebar-->

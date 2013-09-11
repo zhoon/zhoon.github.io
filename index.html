@@ -6,7 +6,7 @@ layout: default
 	{% for post in site.posts %}
 	<li>
 		<a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
-		<span class="post-tag">&lt;{{ post.tag }}&gt;</span>
+		<span class="post-tag">&lt;{{ post.category }}&gt;</span>
 		<p class="post-date">{{ post.date | date_to_string }}</p>
 	</li>
 	{% endfor %}
