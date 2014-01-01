@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
+		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>当line-height遇到不同的字体</title>
+		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
+	</head>
+	<body>
+		<!-- blog maim -->
+		<div class="blog-main">
+			<!-- blog content-->
+			<div class="blog-content blog-post">
+				<h1>当line-height遇到不同的字体</h1>
+				<p class="date">2013年 09月 12日</p>
+				<p>做前端的，对Web界面都很敏感，大到页面的布局，小到一个像素错位，都抠的很紧。</p>
+
+<p>这几天就遇到这样的一个问题，我在做一套公用的按钮样式，有一些按钮的规格是22px的高度，按照往常的写法，只要写height:22px;line-height:22px;就万事大吉了。因为以前都是做一些外包项目，所以没有每个像素都抠的那么紧，但是现在不同了，你的一个小小的按钮将要被上千万甚至上亿的用于看到，而且是在各式各样的系统和浏览器上。所以当我按照以前的思路做完一套按钮之后，在chrome下看是挺完美的，但是当我用IE各个版本看，甚至用Mac下的同个浏览器看，表现都是各式各样，我和我的小伙伴都惊呆了！经过我在各个浏览器下以及不同系统下的测试，大概可以总结一下几点：</p>
+
+<h2 id='id7'>中英文都走同一种字体的情况下：</h2>
+
+<p>在现有的字体中，有些字体只支持英文，有些字体只支持中文，有些字体是某些操作系统专有的，各式各样的字体都有。这里的第一种情况我们要讨论的是我们使用了一种支持中英文的字体。比如说宋体、微软雅黑等字体，使用这种字体的话，如果你的有中文或者英文的话，那么在一般的浏览器上，只需要设置和height一样的行高就可以实现居中了。</p>
+
+<h2 id='id8'>中英文走不同的字体的情况下：</h2>
+
+<p>在中英文混合的情况下，出了IE，其他浏览器都基本和中英文走同一种字体是一样的。因为不同字体对待line-height的情况不同，所以中英文混合的时候，整体的line-height就会出现异常，这种异常我暂时还找不到规律（而且很好奇为什么chrome下不会有这种异常）。解解决办法：先把中英文字体设置为同一种字体，再调整各个浏览器的兼容性。</p>
+			</div>
+			<!-- blog sidebar-->
+				<div class="blog-sidebar">
+	<div class="blog-face-line"></div>
+	<div class="blog-face">
+		<a href="/">zhoonchen</a>
+	</div>
+	<div class="blog-name">zhoonchen</div>
+	<div class="blog-info"></div>
+</div>
+
+
+			<!-- blog footer -->
+				<div class="blog-footer">
+	<p class="blog-copyright">© 2013 – 2013 zhoonchen. Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and host by <a href="https://github.com/zhoon" target="_blank">Github</a>.</p>	
+</div>
+
+		</div>
+
+		
+	</body>
+</html>
