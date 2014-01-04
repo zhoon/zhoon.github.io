@@ -16,6 +16,12 @@ img{ vertical-align:bottom;}
 caption, th {  text-align: left;}
 table { border-collapse: collapse; border-spacing: 0; table-layout: fixed;}
 body { background: #FFF; color: #333; font: 14px/1.5 palatino, "times new roman", serif;}
+h1, h2, h3, h4, h5{font-family:'lucida Grande', Verdana;}
+h1{font-size:38px;}
+h2{font-size:30px;}
+h3{font-size:24px;}
+h4{font-size:16px;}
+h5{font-size:12px;}
 input, select, textarea { font: 12px/1.5 palatino, "times new roman", serif;}
 input, select {vertical-align: middle;}
 textarea{vertical-align: top;}
