@@ -66,7 +66,7 @@ UITableViewCell也需要重写一个子类CommonTableViewCell，这个子类的�
     // 3、4
     - (id)initForTableView:(UITableView *)tableView withStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
     - (id)initForTableView:(UITableView *)tableView withReuseIdentifier:(NSString *)reuseIdentifier;// 首选初始化方法
-    //5
+    // 5
     - (void)setCellUIByPosition:(CommonTableViewCellPosition)position;
 
 首先看3和4，所有的cell初始化都必须使用这两个方法来初始化，原因是需要得到tableView，也就是cell的parentTableView，这个在绘制的时候需要用到，比如上面说的获取tableView的separatorColor；
