@@ -60,14 +60,14 @@ ps：注意才初始化的时候，需要做一些样式的统一，比如说需
 
 UITableViewCell也需要重写一个子类CommonTableViewCell，这个子类的所有方法如下：
 
-	// 1、2
-	- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-	- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
-	// 3、4
-	- (id)initForTableView:(UITableView *)tableView withStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-	- (id)initForTableView:(UITableView *)tableView withReuseIdentifier:(NSString *)reuseIdentifier;// 首选初始化方法
-	//5
-	- (void)setCellUIByPosition:(CommonTableViewCellPosition)position;
+    // 1、2
+    - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+    - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+    // 3、4
+    - (id)initForTableView:(UITableView *)tableView withStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+    - (id)initForTableView:(UITableView *)tableView withReuseIdentifier:(NSString *)reuseIdentifier;// 首选初始化方法
+    //5
+    - (void)setCellUIByPosition:(CommonTableViewCellPosition)position;
 
 首先看3和4，所有的cell初始化都必须使用这两个方法来初始化，原因是需要得到tableView，也就是cell的parentTableView，这个在绘制的时候需要用到，比如上面说的获取tableView的separatorColor；
 
