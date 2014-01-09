@@ -25,7 +25,7 @@ iOS7出来之前，好像很少人觉得UITableView很丑，或者接受不了�
 	    CommonTableViewCellPositionNotInLastSectionAndLastInSection
     };
 
-然后需要有一个函数来判断当前的cell所处的位置，这个函数是在cellForRowAtIndexPath的时候调用的，然后返回一个position的信息，如下：
+然后需要有一个函数来判断当前的cell所处的位置，这个函数是在tableView:cellForRowAtIndexPath:的时候调用的，然后返回一个position的信息，如下：
 
     - (CommonTableViewCellPosition)tableView:(UITableView *)tableView positionForRowAtIndexPath:(NSIndexPath *)indexPath {
 	    if (self.style == UITableViewStyleGrouped) {
@@ -83,4 +83,4 @@ CommonTableViewCell中有个比较重要的变量是borderEdgeInsets，这是一
 
 ##总结
 
-相信整个过程大家大概了解了（我自己都觉得有点啰嗦），这只是一种思路，如果有其他的思路，也期待大家的分享，如果这里面有什么错误，也欢迎大家来交流哈。最后附上这个例子的[源码(Github)](https://github.com/zhoon/iOS7UITableView)。
+相信整个过程大家大概了解了（我自己都觉得有点啰嗦），这只是一种思路，如果有其他的思路，也期待大家的分享，如果这里面有什么错误，也欢迎大家来交流哈。最后附上这个例子的[源码(Github)](https://github.com/zhoon/iOS7UITableViewStyle)。
