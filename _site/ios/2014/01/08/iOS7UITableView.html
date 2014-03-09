@@ -38,7 +38,7 @@
     CommonTableViewCellPositionNotInLastSectionAndLastInSection
 };</code></pre>
 
-<p>然后需要有一个函数来判断当前的cell所处的位置，这个函数是在cellForRowAtIndexPath的时候调用的，然后返回一个position的信息，如下：</p>
+<p>然后需要有一个函数来判断当前的cell所处的位置，这个函数是在tableView:cellForRowAtIndexPath:的时候调用的，然后返回一个position的信息，如下：</p>
 
 <pre><code>- (CommonTableViewCellPosition)tableView:(UITableView *)tableView positionForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.style == UITableViewStyleGrouped) {
@@ -86,7 +86,7 @@
 
 <p>然后是1和2，这两个是重写了系统的初始化接口，默认不用来作为cell的初始化函数，而是在3和4中会调用到这两个函数。也就是说，3和4是用来初始化的，而1和2是用来CommonTableViewCell的子类重写的，CommonTableViewCell的子类不需要重写3和4。</p>
 
-<p>最后一个是5，这个是最关键的一个函数，用来获取绘制模仿iOS7的backgroundView和selectedBackgroundView。绘制的过程下面会详细介绍。</p>
+<p>最后一个是5，这个是最关键的一个函数，用来获取绘制模仿iOS7的backgroundView和selectedBackgroundView。</p>
 
 <p>CommonTableViewCell中有个比较重要的变量是borderEdgeInsets，这是一个UIEdgeInsets类型的变量，用来设置边框的起始位置，因为默认绘制出来的水平边框是从contentView的最小x开始画的，但是有些特殊的需求是需要所有边框都是从边缘开始画的，也就是没有缩进，这个时候就可以用borderEdgeInsets来设置了，其实这个变量就是模仿了iOS7的separatorInset，后面可以考虑把这两个合并起来，就不用每次都要设置两个了。</p>
 
@@ -96,7 +96,7 @@
 
 <h2 id='id4'>总结</h2>
 
-<p>相信整个过程大家大概了解了（我自己都觉得有点啰嗦），这只是一种思路，如果有其他的思路，也期待大家的分享，如果这里面有什么错误，也欢迎大家来交流哈。最后附上这个例子的<a href='https://github.com/zhoon/iOS7UITableView'>源码(Github)</a>。</p>
+<p>相信整个过程大家大概了解了（我自己都觉得有点啰嗦），这只是一种思路，如果有其他的思路，也期待大家的分享，如果这里面有什么错误，也欢迎大家来交流哈。最后附上这个例子的<a href='https://github.com/zhoon/iOS7UITableViewStyle'>源码(Github)</a>。</p>
 			</div>
 			<!-- blog comments -->
 			<div class="blog-comment">
@@ -120,8 +120,9 @@
 	<div class="blog-info">zhoon(粽)，前端设计师，现就职于腾讯广研。目前负责UI组相关网页重构工作以及APP开发的工作...</div>
 	<div class="blog-items">
 		<ul>
-			<li><a href="/">首页</a></li>
+			<li><a href="/">博客首页</a></li>
 			<li><a href="javascript:;">文章分类</a></li>
+			<li><a href="/articalCollect.html">文章收集</a></li>
 			<li><a href="javascript:;">友情链接</a></li>
 			<li><a href="javascript:;">关于我</a></li>
 		</ul>
