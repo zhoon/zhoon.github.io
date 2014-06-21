@@ -31,3 +31,10 @@
  .post-list li{margin-bottom:18px;}
  .post-list .post-date{color:#ccc;}
  .post-list .post-tag{color:#999;margin:0 0 0 3px;}
+
+
+ @media screen and (max-width: 800px) {
+	.blog-sidebar{display:none;}
+	.blog-content{margin-left:0;padding:50px 5%;}
+	.blog-footer{margin-left:0;}
+ }
