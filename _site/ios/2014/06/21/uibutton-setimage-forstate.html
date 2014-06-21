@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
+		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>UIButton中setImage:forState接口的小问题</title>
+		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
+	</head>
+	<body>
+		<!-- blog maim -->
+		<div class="blog-main">
+			<!-- blog content -->
+			<div class="blog-content blog-post">
+				<h1>UIButton中setImage:forState接口的小问题</h1>
+				<p class="date">2014年 06月 21日</p>
+				<pre>此问题为团队项目中遇到的并由团队成员归纳总结，我这里用文章的形式记载总结并且分享给其他遇到同样问题的朋友参考。我们欢迎不同的想法和更多的讨论，有什么问题直接在下面评论回复。</pre>
+<p>我们知道UIButton的setImage:forState接口是用来为button设置图片用的，其中后面的forState参数就是按钮的不同状态，也就是说为按钮的不同状态设置图片。常见的forState参数有；UIControlStateNormal、UIControlStateHighlighted、UIControlStateSelected、UIControlStateDisabled这几种，也就是常态、高亮、选择、禁止这几种状态。</p>
+
+<h3 id='id5'>项目中发现的问题：</h3>
+
+<p>1，如果只是设置了UIControlStateNormal这种状态，那么其他的状态系统会默认给你设置UIControlStateNormal状态的image；</p>
+
+<p>2，UIControlStateSelected和UIControlStateDisabled状态貌似存在冲突，也就是说，如果当前是selected状态，那么如果此时你调用setEnabled接口设置为NO，那么按钮会置灰，并且image会变成normal状态的image，而不是selected状态的image，通过打断点发现，进入setEnabled的时候，图片还是selected状态的图片，但是过了super setEnabled之后，图片就变成了normal状态的图片了，所以这里不知道这种冲突是苹果本身设计就如此，还是这是一个bug。</p>
+
+<p>如果此时有一个需求，就是setEnabled的时候，我不想要图片变为normal状态的图片再置灰色，而是保持selected状态的图片并且置灰色。那该怎么办呢？我的做法是在基类里重写setEnabled接口，如下： <pre><code>- (void)setEnabled:(BOOL)enabled
+{
+    [super setEnabled:enabled];
+    if (self.selected) {
+        self.imageView.image = [self imageForState:UIControlStateSelected];
+    } else {
+        self.imageView.image = [self imageForState:UIControlStateNormal];
+    }
+}</code></pre></p>
+
+<p>tips：所有有forState参数的接口都有类似的问题，遇到同样的问题也可以参考这种方法。</p>
+			</div>
+			<!-- blog comments -->
+			<div class="blog-comment">
+				<div id="disqus_thread"></div>
+			 	<script type="text/javascript">
+			     	 var disqus_shortname = 'zhoonchen'; // required: replace example with your forum shortname
+			      	 (function() {
+			         	 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			          	 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			          	 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			      	 })();
+		    	</script>
+			</div>
+			<!-- blog sidebar -->
+				<div class="blog-sidebar">
+	<div class="blog-face-line"></div>
+	<div class="blog-face">
+		<a href="/">zhoonchen</a>
+	</div>
+	<h3 class="blog-name">zhoonchen</h3>
+	<div class="blog-info">zhoon(粽)，前端设计师，现就职于腾讯广研。目前负责UI组相关网页重构工作以及APP开发的工作...</div>
+	<div class="blog-items">
+		<ul>
+			<li><a href="/">博客首页</a></li>
+			<li><a href="javascript:;">文章分类</a></li>
+			<li><a href="/articalCollect.html">文章收集</a></li>
+			<li><a href="javascript:;">友情链接</a></li>
+			<li><a href="javascript:;">关于我</a></li>
+		</ul>
+	</div>
+</div>
+
+
+			<!-- blog footer -->
+				<div class="blog-footer">
+	<p class="blog-copyright">© 2013 – 2013 zhoonchen. Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and host by <a href="https://github.com/zhoon" target="_blank">Github</a>.</p>	
+</div>
+
+		</div>
+			
+	</body>
+</html>

@@ -8,7 +8,7 @@
 
 <p>首先需要写一个UITableView子类CommonTableView，CommonTableView需要做的一件很重要的事，就是判断当前cell的位置，像Group类型，需要知道cell是当前section的第一个、中间或者是最后一个，甚至有可能section只有一个cell；而Plain类型也是需要知道当前cell的位置，Plain类型的cell位置主要有两种，一种是非最后一个section的最后一个cell（这种情况下是不需要画边框的），而另一种就是除了这一种的其他cell位置，需要画一个下边框。所以就有了以下这个枚举：</p>
 
-<pre><code>typedef NS_ENUM(NSInteger, CommonTableViewCellPosition) {
+<code>typedef NS_ENUM(NSInteger, CommonTableViewCellPosition) {
     //group
     CommonTableViewCellPositionFirstInSection = 0,
     CommonTableViewCellPositionMiddleInSection,
@@ -17,11 +17,11 @@
     // plain
     CommonTableViewCellPositionNormal,
     CommonTableViewCellPositionNotInLastSectionAndLastInSection
-};</code></pre>
+};</code>
 
 <p>然后需要有一个函数来判断当前的cell所处的位置，这个函数是在tableView:cellForRowAtIndexPath:的时候调用的，然后返回一个position的信息，如下：</p>
 
-<pre><code>- (CommonTableViewCellPosition)tableView:(UITableView *)tableView positionForRowAtIndexPath:(NSIndexPath *)indexPath {
+<code>- (CommonTableViewCellPosition)tableView:(UITableView *)tableView positionForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.style == UITableViewStyleGrouped) {
         NSInteger numberOfRowsInSection = [tableView.dataSource tableView:tableView numberOfRowsInSection:indexPath.section];
  	    if (numberOfRowsInSection == 1) {
@@ -44,7 +44,7 @@
         }
     }
     return CommonTableViewCellPositionNormal;
-}</code></pre>
+}</code>
 
 <p>这样就可以知道每个cell所处的位置了，或许有人会问，知道位置了有什么用。那当然是用来画边框的阿，像Group类型，如果cell处于section的第一个，那么它需要画上下两个边（上面不用缩进，下面需要缩进），如果是处于中间的cell，需要画一个缩进的边，最后的cell则需要画一个不缩进的边。Plain类型也是类似的原理拉。</p>
 
@@ -54,14 +54,14 @@
 
 <p>UITableViewCell也需要重写一个子类CommonTableViewCell，这个子类的所有方法如下：</p>
 
-<pre><code>// 1、2
+<code>// 1、2
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 // 3、4
 - (id)initForTableView:(UITableView *)tableView withStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (id)initForTableView:(UITableView *)tableView withReuseIdentifier:(NSString *)reuseIdentifier;// 首选初始化方法
 // 5
-- (void)setCellUIByPosition:(CommonTableViewCellPosition)position;</code></pre>
+- (void)setCellUIByPosition:(CommonTableViewCellPosition)position;</code>
 
 <p>首先看3和4，所有的cell初始化都必须使用这两个方法来初始化，原因是需要得到tableView，也就是cell的parentTableView，这个在绘制的时候需要用到，比如上面说的获取tableView的separatorColor；</p>
 
