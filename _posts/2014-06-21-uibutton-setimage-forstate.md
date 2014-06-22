@@ -4,6 +4,7 @@ title: UIButton中setImage:forState接口的小问题
 category: iOS
 ---
 
+
 <pre>此问题为团队项目中遇到的并由团队成员归纳总结，我这里用文章的形式记载总结并且分享给其他遇到同样问题的朋友参考。我们欢迎不同的想法和更多的讨论，有什么问题直接在下面评论回复。</pre>
 
 我们知道UIButton的setImage:forState接口是用来为button设置图片用的，其中后面的forState参数就是按钮的不同状态，也就是说为按钮的不同状态设置图片。常见的forState参数有；UIControlStateNormal、UIControlStateHighlighted、UIControlStateSelected、UIControlStateDisabled这几种，也就是常态、高亮、选择、禁止这几种状态。
