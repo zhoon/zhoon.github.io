@@ -14,6 +14,8 @@
  .blog-name{font-size:24px;text-align:center;padding:0 0 30px 0;}
  .blog-face-line{width:0px;overflow:hidden;position:absolute;left:50%;height:30px;border-left:1px solid #999;}
  .blog-info{font-family:"lucida Grande",Verdana;font-size:16px;margin:0px 35px 0px 35px;padding:30px 0 30px;border-top:1px dotted #ccc;color:#999;line-height:1.8;}
+ .blog-topbar{display: none;position: fixed;top: 0px;left: 0px;right: 0px;height: 40px;line-height: 40px;text-align: center;background-color: #AF5F3C;}
+ .blog-topbar .blog-top-title{color: #fff;font-size: 16px;text-decoration: none;}
  .blog-items{margin:0px 35px 0 35px;padding: 0 0 30px;}
  .blog-items ul{padding: 0px;}
  .blog-items ul li{padding:2px 0;}
@@ -35,7 +37,8 @@
 
  @media screen and (max-width: 800px) {
 	.blog-sidebar{display:none;}
-	.blog-content{margin-left:0;padding:20px 5% 20px;}
+	.blog-topbar{display: block;}
+	.blog-content{margin-left:0;padding:80px 5% 20px;}
 	.blog-comment{margin-left:0px;padding: 0 5% 20px;}
 	.blog-footer{margin-left:0;}
 	.blog-post h1{font-size:24px;line-height:1.2;word-wrap: break-word;word-break: break-all;margin-bottom: 10px;}

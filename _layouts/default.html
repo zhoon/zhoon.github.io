@@ -13,10 +13,12 @@
 	<body>
 		<!-- blog maim -->
 		<div class="blog-main">
+
 			<!-- blog content-->
-			<div class="blog-content">
-				{{ content }}
-			</div>
+			{% include topbar.html %}
+
+			<!-- blog content-->
+			<div class="blog-content">{{ content }}</div>
 
 			<!-- blog sidebar-->
 				{% include sidebar.html %}

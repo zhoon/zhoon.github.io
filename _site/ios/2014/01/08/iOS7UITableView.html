@@ -23,7 +23,7 @@
 
 <p>主要的思路是这样的：利用UITableViewCell的backgroundView和selectedBackgroundView属性，在normal状态和选择状态给cell设置一个自定义样式的view。</p>
 
-<h2 id='uitableview'>UITableView</h2>
+<h2 id="uitableview">UITableView</h2>
 
 <p>首先需要写一个UITableView子类CommonTableView，CommonTableView需要做的一件很重要的事，就是判断当前cell的位置，像Group类型，需要知道cell是当前section的第一个、中间或者是最后一个，甚至有可能section只有一个cell；而Plain类型也是需要知道当前cell的位置，Plain类型的cell位置主要有两种，一种是非最后一个section的最后一个cell（这种情况下是不需要画边框的），而另一种就是除了这一种的其他cell位置，需要画一个下边框。所以就有了以下这个枚举：</p>
 
@@ -36,7 +36,8 @@
     // plain
     CommonTableViewCellPositionNormal,
     CommonTableViewCellPositionNotInLastSectionAndLastInSection
-};</code></pre>
+};
+</code></pre>
 
 <p>然后需要有一个函数来判断当前的cell所处的位置，这个函数是在tableView:cellForRowAtIndexPath:的时候调用的，然后返回一个position的信息，如下：</p>
 
@@ -63,13 +64,14 @@
         }
     }
     return CommonTableViewCellPositionNormal;
-}</code></pre>
+}
+</code></pre>
 
 <p>这样就可以知道每个cell所处的位置了，或许有人会问，知道位置了有什么用。那当然是用来画边框的阿，像Group类型，如果cell处于section的第一个，那么它需要画上下两个边（上面不用缩进，下面需要缩进），如果是处于中间的cell，需要画一个缩进的边，最后的cell则需要画一个不缩进的边。Plain类型也是类似的原理拉。</p>
 
 <p>ps：注意才初始化的时候，需要做一些样式的统一，比如说需要设置tableView的separatorColor，因为在绘制的时候边框的color是取自这个颜色值的；还有一点就是需要统一设置tableView的backgroundView，因为iOS6和7下的背景是不一样的。</p>
 
-<h2 id='uitableviewcell'>UITableViewCell</h2>
+<h2 id="uitableviewcell">UITableViewCell</h2>
 
 <p>UITableViewCell也需要重写一个子类CommonTableViewCell，这个子类的所有方法如下：</p>
 
@@ -80,7 +82,8 @@
 - (id)initForTableView:(UITableView *)tableView withStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (id)initForTableView:(UITableView *)tableView withReuseIdentifier:(NSString *)reuseIdentifier;// 首选初始化方法
 // 5
-- (void)setCellUIByPosition:(CommonTableViewCellPosition)position;</code></pre>
+- (void)setCellUIByPosition:(CommonTableViewCellPosition)position;
+</code></pre>
 
 <p>首先看3和4，所有的cell初始化都必须使用这两个方法来初始化，原因是需要得到tableView，也就是cell的parentTableView，这个在绘制的时候需要用到，比如上面说的获取tableView的separatorColor；</p>
 
@@ -90,13 +93,14 @@
 
 <p>CommonTableViewCell中有个比较重要的变量是borderEdgeInsets，这是一个UIEdgeInsets类型的变量，用来设置边框的起始位置，因为默认绘制出来的水平边框是从contentView的最小x开始画的，但是有些特殊的需求是需要所有边框都是从边缘开始画的，也就是没有缩进，这个时候就可以用borderEdgeInsets来设置了，其实这个变量就是模仿了iOS7的separatorInset，后面可以考虑把这两个合并起来，就不用每次都要设置两个了。</p>
 
-<h2 id='commoncellbackgroundviewhelper'>CommonCellBackgroundViewHelper</h2>
+<h2 id="commoncellbackgroundviewhelper">CommonCellBackgroundViewHelper</h2>
 
 <p>这个类就是用来生产上面所说的iOS6的cell的backgroundView和selectedBackgroundView。具体原理就不说了，大家自己去看下原文件，大概说下思路：就是利用这个类来返回一个UIView，然后这个UIView会根据当前的cell的位置来添加不同的边框，所以所有的这些UIView拼起来就是有边框的cell了，这就实现了iOS7的tableView了。</p>
 
-<h2 id='id4'>总结</h2>
+<h2 id="section">总结</h2>
 
-<p>相信整个过程大家大概了解了（我自己都觉得有点啰嗦），这只是一种思路，如果有其他的思路，也期待大家的分享，如果这里面有什么错误，也欢迎大家来交流哈。最后附上这个例子的<a href='https://github.com/zhoon/iOS7UITableViewStyle'>源码(Github)</a>。</p>
+<p>相信整个过程大家大概了解了（我自己都觉得有点啰嗦），这只是一种思路，如果有其他的思路，也期待大家的分享，如果这里面有什么错误，也欢迎大家来交流哈。最后附上这个例子的<a href="https://github.com/zhoon/iOS7UITableViewStyle">源码(Github)</a>。</p>
+
 			</div>
 			<!-- blog comments -->
 			<div class="blog-comment">
@@ -114,9 +118,9 @@
 				<div class="blog-sidebar">
 	<div class="blog-face-line"></div>
 	<div class="blog-face">
-		<a href="/">zhoonchen</a>
+		<a href="/">Zhoon Chen</a>
 	</div>
-	<h3 class="blog-name">zhoonchen</h3>
+	<h3 class="blog-name">Zhoon Chen</h3>
 	<div class="blog-info">zhoon(粽)，前端设计师，现就职于腾讯广研。目前负责UI组相关网页重构工作以及APP开发的工作...</div>
 	<div class="blog-items">
 		<ul>
