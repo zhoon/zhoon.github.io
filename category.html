@@ -13,7 +13,7 @@ category: 文章分类/category
     {% for post in category.last %}
     <div class="post-item">
         <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
-        <p class='post-date'>{{ post.date | date: "%m月%d日"}}</p>
+        <em class='post-date'>{{ post.date | date: "%m月%d日"}}</em>
     </div>
     {% endfor %}
 
