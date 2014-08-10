@@ -46,9 +46,9 @@
 @media screen and (max-width: 800px) {
     .blog-sidebar{display:none;}
     .blog-topbar{display: block;}
-    .blog-content{margin-left:0;padding:70px 5% 20px;}
+    .blog-content{margin-left:0;padding:60px 5% 20px;}
     .blog-comment{margin-left:0px;padding: 0 5% 20px;}
-    .blog-footer{margin-left:0;padding:0 20px;}
+    .blog-footer{margin-left:0;padding:0 20px 20px;}
     .blog-post h1{font-size:24px;line-height:1.2;word-wrap: break-word;word-break: break-all;margin-bottom: 10px;}
     .blog-post h2{font-size:20px;line-height:1.2;word-wrap: break-word;word-break: break-all;}
     .blog-post h3{font-size:16px;line-height:1.2;word-wrap: break-word;word-break: break-all;}
