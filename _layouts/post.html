@@ -6,6 +6,9 @@
 		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
 		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        {% if page.url == "/404.html" %}
+        <meta http-equiv="refresh" content="5; url=/">
+        {% endif %}
 		<title>{{ page.title }}</title>
 		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">

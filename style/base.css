@@ -12,12 +12,11 @@ strong { font-weight: bold;}
 i{font-style: italic;}
 ul, ol { list-style: none;}
 fieldset, img { border: none;}
-pre{font-size:14px;color:#666;/*word-break: break-all;word-wrap: break-word;*/}
+pre{font-size:14px;color:#666;}
 img{ vertical-align:bottom;}
 caption, th {  text-align: left;}
 table { border-collapse: collapse; border-spacing: 0; table-layout: fixed;}
 body { background: #FFF; color: #333; font: 14px/1.5 "Microsoft YaHei","lucida Grande",Verdana;}
-h1, h2, h3, h4, h5{font-family:'lucida Grande', Verdana;}
 h1{font-size:38px;}
 h2{font-size:30px;}
 h3{font-size:24px;}
@@ -46,9 +45,6 @@ a:hover { text-decoration: underline;}
  * ========================== */
 article, aside, dialog, footer, header, section, footer, nav, figure, menu { display:block; }
 
-/* ==========================
- * 功能性类名
- * ========================== */
 /*文字排版
 ******************************/
 .font12 { font-size: 12px;}
@@ -68,7 +64,8 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .no-unl { text-decoration:none;}
 .no-border { border-style:none; border-width: 0;}
 .ellipsis{ overflow: hidden;white-space: nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
-/*定位 
+
+/*布局定位
 ******************************/
 .tl { text-align: left; }
 .tc { text-align: center; }
@@ -86,6 +83,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .zoom { *zoom: 1 }
 .hide { display: none; }
 .show{ display: block; }
+
 /*颜色
 ******************************/
 .white{color: #FFF;}
@@ -93,6 +91,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .gray{color: #999;}
 .blue{color: #3879D9;}
 .red, .error-text{color: #c00;}
+
 /*长度高度
 ******************************/
 .w10 { width:10px;}
@@ -135,8 +134,8 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .w530 { width:530px;}
 .w560 { width:560px;}
 .w558 { width:558px;}
-.w590 { width: 590px;}
-.w596 { width: 596px;}
+.w590 { width:590px;}
+.w596 { width:596px;}
 .w600 { width:600px;}
 .w602 { width:602px;}
 .w800 { width:800px;}
