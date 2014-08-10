@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 模仿iOS7下的UITableView样式
-category: iOS
+categores: [iOS]
 ---
 
 iOS7出来之前，好像很少人觉得UITableView很丑，或者接受不了；iOS7出来之后，各种喷，什么什么好丑阿，什么什么不能接受阿，绝对不升级iOS7阿之类的；现在，估计很多人看到iOS6，都会觉得：这UI怎么这么丑阿，很奇怪，这就是Apple厉害的地方。就我自己而言，也已经接受了iOS7的风格，看到iOS6也会觉得很丑，所以下面我想分享如何实现UITableView在iOS7以下的系统模仿iOS7的风格，这个实现思路是我们组其他人想的，我只是稍作了修改和整理。

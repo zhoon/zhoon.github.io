@@ -1,7 +1,7 @@
 ---
 layout: post
 title: UIButton中setImage:forState接口的小问题
-category: iOS
+categores: [iOS]
 ---
 
 <pre>此问题为团队项目中遇到的并由团队成员归纳总结，我这里用文章的形式记载总结并且分享给其他遇到同样问题的朋友参考。我们欢迎不同的想法和更多的讨论，有什么问题直接在下面评论回复。</pre>
