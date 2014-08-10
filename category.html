@@ -6,10 +6,7 @@ category: 文章分类/category
 
 <h4>Category</h4>
 <ul>
-    //这里使用了 Jekyll 语法，会被编译，所以加多个"\"
-    {\% for category in site.categories %\}
-    <li><a href="/categories/{\{ category | first }\}/" title="view all
-posts">{\{ category | first }\} {\{ category | last | size }\}</a>
-    </li>
-    {\% endfor %\}
+    {% for post in site.categories.[page.category] %}
+    {{ post.date }} {{ post.title }}
+    {% endfor %}
 </ul>
