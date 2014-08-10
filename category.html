@@ -4,13 +4,30 @@ title: 文章分类/category
 category: 文章分类/category
 ---
 
-<ul>
+<ul class="post-list">
+
     {% for category in site.categories %}
-    <h3>{{ category | first }}({{ category | last | size }})</h3>
+    <h1>{{ category | first }}({{ category | last | size }})</h1>
     <ul>
         {% for post in category.last %}
         <li><a href="{{ post.url }}">{{ post.title }}</a>({{ post.date | date: "%m月%d日" }})</li>
         {% endfor %}
     </ul>
     {% endfor %}
+
+    {% for post in site.posts %}
+    <li>
+        {% unless post.next %}<h1>{{ post.date | date: '%Y' }}</h1>
+        {% else %}
+        {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+        {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+        {% if year != nyear %}<h1>{{ post.date | date: '%Y' }}</h1>
+        {% endif %}
+        {% endunless %}
+        <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-tag">&lt;{{ post.categories }}&gt;</span>
+        <p class='post-date'>{{ post.date | date: "%m月%d日"}}</p>
+    </li>
+    {% endfor %}
+
 </ul>
