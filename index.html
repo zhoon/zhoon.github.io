@@ -14,11 +14,11 @@ layout: default
     {% endif %}
     {% endunless %}
 
-    <p class="pose-item">
+    <div class="pose-item">
         <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
         <span class="post-tag">&lt;{{ post.categories }}&gt;</span>
         <p class='post-date'>{{ post.date | date: "%m月%d日"}}</p>
-    </p>
+    </div>
 
     {% endfor %}
 
