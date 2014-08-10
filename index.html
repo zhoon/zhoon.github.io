@@ -6,11 +6,11 @@ layout: default
 
     {% for post in site.posts %}
     <li>
-        {% unless post.next %}<h2>{{ post.date | date: '%Y' }}</h2>
+        {% unless post.next %}<h1>{{ post.date | date: '%Y' }}</h1>
         {% else %}
         {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
         {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-        {% if year != nyear %}<h2>{{ post.date | date: '%Y' }}</h2>
+        {% if year != nyear %}<h1>{{ post.date | date: '%Y' }}</h1>
         {% endif %}
         {% endunless %}
         <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
