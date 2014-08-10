@@ -4,22 +4,20 @@ layout: default
 
 <ul class="post-list">
 
-    <div class="yearly-archive archive-page">{% for post in site.posts %}
+    {% for post in site.posts %}
+    <li>
         {% unless post.next %}<h2>{{ post.date | date: '%Y' }}</h2>
         {% else %}
         {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
         {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
         {% if year != nyear %}<h2>{{ post.date | date: '%Y' }}</h2>
         {% endif %}
-        {% endunless %}<p><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <span class='category-tag'>[{{ post.categories }}]</span><span class='date'>{{post.date | date: "%m月 %d日"}}</span></p>
-        {% endfor %}
-    </div>
+        {% endunless %}
+        <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        <span class="post-tag">&lt;{{ post.categores }}&gt;</span>
+            <span class='post-date'>{{ post.date | date: "%m月%d日"}}</span>
+        </p>
+    </li>
+    {% endfor %}
 
-	{% for post in site.posts %}
-	<li>
-		<a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
-		<span class="post-tag">&lt;{{ post.category }}&gt;</span>
-		<p class="post-date">{{ post.date | date_to_string }}</p>
-	</li>
-	{% endfor %}
 </ul>
