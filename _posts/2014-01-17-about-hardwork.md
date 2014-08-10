@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 关于勤奋
-categories: [其他]
+categories: [吹水]
 ---
 
 聪明出于勤奋，天才在于积累。——华罗庚<br>
