@@ -19,7 +19,6 @@
  .blog-items ul{padding: 0;}
  .blog-items ul li{padding:4px 0;}
  .blog-post{color:#000;line-height:1.8;font-size:16px;}
- .blog-post h1{}
  .blog-post h2{margin:20px 0 10px;}
  .blog-post p{margin:15px 0;word-wrap: break-word; word-break: break-all;}
  .blog-post ul{padding:5px 0;}
@@ -28,6 +27,12 @@
  .blog-post .date{margin:0;color:#999;}
  .blog-post code{overflow-y:scroll;overflow-x:auto;display: block;}
  .blog-post pre{margin:15px 0 0;padding: 10px 15px;overflow: hidden;border-radius: 4px;background-color:#eee;word-wrap: break-word;word-break: break-all;}
+
+ .post-other{color:#000;line-height:1.8;font-size:16px;}
+ .post-other p{margin:15px 0;word-wrap: break-word; word-break: break-all;}
+ .post-other ul{padding:5px 0;}
+ .post-other ul li{list-style:none;color:rgba(0,0,0,0.4);}
+ .post-other ol li{list-style: none;color:rgba(0,0,0,0.4);}
 
  .post-list{padding:0 20px;}
  .post-list h1{color: #ccc;margin-bottom: 10px;}
