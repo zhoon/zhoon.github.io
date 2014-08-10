@@ -9,12 +9,13 @@ category: 文章分类/category
     {% for category in site.categories %}
 
     <h1>{{ category | first }}({{ category | last | size }})</h1>
+
+    {% for post in category.last %}
     <div class="post-item">
-        {% for post in category.last %}
         <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
         <p class='post-date'>{{ post.date | date: "%m月%d日"}}</p>
-        {% endfor %}
     </div>
+    {% endfor %}
 
     {% endfor %}
 

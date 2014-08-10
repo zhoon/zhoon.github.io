@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dedf980f-d50b-4ea0-af2c-08a07bf39b28" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-08-09-app-rebuild.md" afterPath="$PROJECT_DIR$/_posts/2014-08-09-app-rebuild.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_layouts/other.html" afterPath="$PROJECT_DIR$/_layouts/other.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/category.html" afterPath="$PROJECT_DIR$/category.html" />
     </list>
     <ignored path="weblog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,31 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="category.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="442">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="other.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_layouts/other.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24714285" vertical-offset="99" max-vertical-offset="918">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/style/page.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="935">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.17" vertical-offset="0" max-vertical-offset="700">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -98,9 +77,9 @@
         <option value="$PROJECT_DIR$/_posts/2014-07-06-travel.md" />
         <option value="$PROJECT_DIR$/style/page.css" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/category.html" />
         <option value="$PROJECT_DIR$/_layouts/other.html" />
         <option value="$PROJECT_DIR$/_posts/2014-08-09-app-rebuild.md" />
+        <option value="$PROJECT_DIR$/category.html" />
       </list>
     </option>
   </component>
@@ -654,26 +633,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style/page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="935">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.12" vertical-offset="0" max-vertical-offset="527">
           <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="442">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -691,8 +654,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/other.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24714285" vertical-offset="99" max-vertical-offset="918">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.17428571" vertical-offset="99" max-vertical-offset="918">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42696628" vertical-offset="189" max-vertical-offset="935">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17" vertical-offset="0" max-vertical-offset="700">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
