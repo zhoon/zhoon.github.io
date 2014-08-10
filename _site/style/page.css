@@ -6,18 +6,18 @@
 
  .blog-main{width:100%;overflow:hidden;}
  .blog-content{margin:0 0 0 25%;padding:40px 100px 50px;}
- .blog-sidebar{width:25%;position:fixed;top:0px;bottom:0px;left:0px;background-color:#f6f6f6;overflow:auto;}
+ .blog-sidebar{width:25%;position:fixed;top:0;bottom:0;left:0;background-color:#f6f6f6;overflow:auto;}
  .blog-comment{margin:0 0 0 25%;padding:0 100px 50px 100px;}
  .blog-footer{margin:0 0 0 25%;text-align:center;padding:30px 0;}
  .blog-face{width:120px;height:120px;overflow:hidden;border-radius:60px;margin:30px auto 20px;}
  .blog-face a{width:120px;height:120px;display:block;background:url(/img/face.png) no-repeat;text-indent:-9999px;}
  .blog-name{font-size:24px;text-align:center;padding:0 0 30px 0;}
- .blog-face-line{width:0px;overflow:hidden;position:absolute;left:50%;height:30px;border-left:1px solid #999;}
- .blog-info{font-family:"lucida Grande",Verdana;font-size:16px;margin:0px 35px 0px 35px;padding:30px 0 30px;border-top:1px dotted #ccc;color:#999;line-height:1.8;}
- .blog-topbar{display: none;position: fixed;top: 0px;left: 0px;right: 0px;height: 40px;line-height: 40px;text-align: center;background-color: #eee;box-shadow:0 1px 3px rgba(0,0,0,0.25);}
+ .blog-face-line{width:0;overflow:hidden;position:absolute;left:50%;height:30px;border-left:1px solid #999;}
+ .blog-info{font-size:16px;margin:0 35px 0 35px;padding:30px 0 30px;border-top:1px dotted #ccc;color:#999;line-height:1.8;}
+ .blog-topbar{display: none;position: fixed;top: 0;left: 0;right: 0;height: 40px;line-height: 40px;text-align: center;background-color: #eee;box-shadow:0 1px 3px rgba(0,0,0,0.25);}
  .blog-topbar .blog-top-title{color: #333;font-size: 16px;text-decoration: none;}
- .blog-items{margin:0px 35px 0 35px;padding: 0 0 30px;}
- .blog-items ul{padding: 0px;}
+ .blog-items{margin:0 35px 0 35px;padding: 0 0 30px;}
+ .blog-items ul{padding: 0;}
  .blog-items ul li{padding:2px 0;}
  .blog-post{color:#000;line-height:1.8;font-size:16px;}
  .blog-post h1{}
@@ -40,7 +40,7 @@
 	.blog-topbar{display: block;}
 	.blog-content{margin-left:0;padding:70px 5% 20px;}
 	.blog-comment{margin-left:0px;padding: 0 5% 20px;}
-	.blog-footer{margin-left:0;}
+	.blog-footer{margin-left:0;padding:0 20px;}
 	.blog-post h1{font-size:24px;line-height:1.2;word-wrap: break-word;word-break: break-all;margin-bottom: 10px;}
 	.blog-post h2{font-size:20px;line-height:1.2;word-wrap: break-word;word-break: break-all;}
 	.blog-post h3{font-size:16px;line-height:1.2;word-wrap: break-word;word-break: break-all;}
