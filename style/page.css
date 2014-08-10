@@ -29,6 +29,7 @@
  .blog-post pre{margin:15px 0 0;padding: 10px 15px;overflow: hidden;border-radius: 4px;background-color:#eee;word-wrap: break-word;word-break: break-all;}
 
  .post-list{padding:0 20px;}
+ .post-list h1{color: #ccc;margin-bottom: 10px;}
  .post-list li{margin-bottom:18px;}
  .post-list .post-date{color:#ccc;}
  .post-list .post-tag{color:#999;margin:0 0 0 3px;}
