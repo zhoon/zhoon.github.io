@@ -1,7 +1,7 @@
 ---
 layout: post
 title: APP重构工程师 
-categories: [iOS,项目管理]
+categories: [iOS]
 ---
 
 相信很多人都听过网页重构工程师，但是对于原生App来说，就很少听说有专门的重构工程师，基本上都是开发一个人包揽的界面还有一些数据和逻辑的开发。我第一次听说这个词也是两年前听我们部门的leader在webRebuild年会上的一个关于App重构主题分享，那时候就有了一些概念。加上最近看的一篇[文章](http://yuguo.us/weblog/ios-ui-development/)，结合团队这半年来积累的一些有关App重构的经验，才有了下面这篇文章。
