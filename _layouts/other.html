@@ -24,6 +24,7 @@
 				{{ content }}
 			</div>
 
+            {% if page.url == "/message.html" %}
 			<!-- blog comments -->
 			<div class="blog-comment">
 				<div id="disqus_thread"></div>
@@ -36,6 +37,7 @@
 			      	 })();
 		    	</script>
 			</div>
+            {% endif %}
 
 			<!-- blog sidebar -->
 				{% include sidebar.html %}
