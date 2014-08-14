@@ -2241,7 +2241,7 @@ a {text-decoration:none;}
   -webkit-flex:1;
   -o-flex:1;
   -ms-flex:1;
-  flex-grow:1;
+  flex:1;
   text-align:center;
 }
 .qm_navbar_btn {
@@ -2302,6 +2302,7 @@ a {text-decoration:none;}
   padding-left:14px;
   padding-right:14px;
   font-size:14px;
+  background-color:rgba(0,255,0,.5);
 }
 .qm_list_item_icon {
   display:inline-block;
@@ -2319,11 +2320,13 @@ a {text-decoration:none;}
   -webkit-flex:1;
   -o-flex:1;
   -ms-flex:1;
-  flex-grow:1;/* 在item内撑满剩余空间 */
+  flex:1;/* 在item内撑满剩余空间 */
   color:#000;
+  background-color:rgba(255,0,0,.5);
 }
 .qm_list_item_subtitle {
   color:#cbcbcb;
+  background-color:rgba(0,0,255,.5);
 }
 /* 不显示item底部的分隔线 */
 .qm_list_item_BorderNone:after {
