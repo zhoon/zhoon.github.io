@@ -2210,10 +2210,12 @@ a {text-decoration:none;}
   display:-moz-box;
   display:-ms-flexbox;
   display:-webkit-flex;
+  display:-o-flex;
   display:flex;
   -webkit-box-align:center;
   -moz-box-align:center;
   -webkit-align-items:center;
+  -o-align-items:center;
   -ms-align-items:center;
   align-items:center;
   height:40px;
@@ -2234,10 +2236,11 @@ a {text-decoration:none;}
 .qm_navbar_title {
   display:block;
   height:100%;
-  -webkit-box-flex-grow:1;
-  -moz-box-flex-grow:1;
-  -webkit-flex-grow:1;
-  -ms-flex-grow:1;
+  -webkit-box-flex:1;
+  -moz-box-flex:1;
+  -webkit-flex:1;
+  -o-flex:1;
+  -ms-flex:1;
   flex-grow:1;
   text-align:center;
 }
@@ -2246,6 +2249,7 @@ a {text-decoration:none;}
   display:-moz-box;
   display:-ms-flexbox;
   display:-webkit-flex;
+  display:-o-flex;
   display:flex;
   width:44px;
   height:100%;
@@ -2255,6 +2259,7 @@ a {text-decoration:none;}
   -webkit-box-align:center;
   -moz-box-align:center;
   -webkit-align-self:center;
+  -o-align-self:center;
   -ms-align-self:center;
   align-self:center;
 }
@@ -2285,10 +2290,12 @@ a {text-decoration:none;}
   display:-moz-box;
   display:-ms-flexbox;
   display:-webkit-flex;
+  display:-o-flex;
   display:flex;
   -webkit-box-align:center;
   -moz-box-align:center;
   -webkit-align-items:center;
+  -o-align-items:center;
   -ms-align-items:center;
   align-items:center;
   min-height:44px;
@@ -2302,14 +2309,16 @@ a {text-decoration:none;}
   -webkit-box-align:center;
   -moz-box-align:center;
   -webkit-align-self:center;
+  -o-align-self:center;
   -ms-align-self:center;
   align-self:center;
 }
 .qm_list_item_title {
-  -webkit-box-flex-grow:1;
-  -moz-box-flex-grow:1;
-  -webkit-flex-grow:1;
-  -ms-flex-grow:1;
+  -webkit-box-flex:1;
+  -moz-box-flex:1;
+  -webkit-flex:1;
+  -o-flex:1;
+  -ms-flex:1;
   flex-grow:1;/* 在item内撑满剩余空间 */
   color:#000;
 }
@@ -2405,7 +2414,17 @@ a{color:#2685d2;}
 }
 .titlebar_actions {
   float:right;
+  display:-webkit-box;
+  display:-moz-box;
+  display:-ms-flexbox;
+  display:-webkit-flex;
+  display:-o-flex;
   display:flex;
+  -webkit-box-align:center;
+  -moz-box-align:center;
+  -webkit-align-items:center;
+  -o-align-items:center;
+  -ms-align-items:center;
   align-items:center;
   padding:0 10px;
   height:100%;
