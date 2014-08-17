@@ -42,7 +42,6 @@
 .post-list .post-date{display:block;color:#ccc;}
 .post-list .post-tag{color:#999;margin:0 0 0 3px;}
 
-
 @media screen and (max-width: 800px) {
     .blog-sidebar{display:none;}
     .blog-topbar{display: block;}
