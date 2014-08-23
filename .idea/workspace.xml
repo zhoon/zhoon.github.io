@@ -11,7 +11,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/_site/吐槽/2013/09/11/work-and-play.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mobile_zhoon.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-08-23-flex.md" afterPath="$PROJECT_DIR$/_posts/2014-08-23-flex.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="weblog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +39,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50364965" vertical-offset="811" max-vertical-offset="1632">
-              <caret line="68" column="30" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.5708029" vertical-offset="17" max-vertical-offset="1632">
+              <caret line="24" column="164" selection-start-line="24" selection-start-column="164" selection-end-line="24" selection-end-column="164" />
               <folding />
             </state>
           </provider>
@@ -741,8 +740,8 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50364965" vertical-offset="811" max-vertical-offset="1632">
-          <caret line="68" column="30" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.5708029" vertical-offset="17" max-vertical-offset="1632">
+          <caret line="24" column="164" selection-start-line="24" selection-start-column="164" selection-end-line="24" selection-end-column="164" />
           <folding />
         </state>
       </provider>
