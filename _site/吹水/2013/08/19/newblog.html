@@ -6,7 +6,7 @@
 		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
 		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>UIButton中setImage:forState接口的小问题</title>
+		<title>新博客正式上线</title>
 		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
 	</head>
@@ -33,30 +33,18 @@
 
 			<!-- blog content -->
 			<div class="blog-content blog-post">
-				<h1>UIButton中setImage:forState接口的小问题</h1>
-				<p class="date">2014年 06月 21日</p>
-				<pre>此问题为团队项目中遇到的并由团队成员归纳总结，我这里用文章的形式记载总结并且分享给其他遇到同样问题的朋友参考。我们欢迎不同的想法和更多的讨论，有什么问题直接在下面评论回复。</pre>
-
-<p>我们知道UIButton的setImage:forState接口是用来为button设置图片用的，其中后面的forState参数就是按钮的不同状态，也就是说为按钮的不同状态设置图片。常见的forState参数有；UIControlStateNormal、UIControlStateHighlighted、UIControlStateSelected、UIControlStateDisabled这几种，也就是常态、高亮、选择、禁止这几种状态。</p>
-
-<h2 id="section">项目中发现的问题：</h2>
-
-<p>1，如果只是设置了UIControlStateNormal这种状态，那么其他的状态系统会默认给你设置UIControlStateNormal状态的image；</p>
-
-<p>2，UIControlStateSelected和UIControlStateDisabled状态貌似存在冲突，也就是说，如果当前是selected状态，那么如果此时你调用setEnabled接口设置为NO，那么按钮会置灰，并且image会变成normal状态的image，而不是selected状态的image，通过打断点发现，进入setEnabled的时候，图片还是selected状态的图片，但是过了super setEnabled之后，图片就变成了normal状态的图片了，所以这里不知道这种冲突是苹果本身设计就如此，还是这是一个bug。</p>
-
-<p>如果此时有一个需求，就是setEnabled的时候，我不想要图片变为normal状态的图片再置灰色，而是保持selected状态的图片并且置灰色。那该怎么办呢？我的做法是在基类里重写setEnabled接口，如下：</p>
-<pre><code>- (void)setEnabled:(BOOL)enabled
-{
-    [super setEnabled:enabled];
-    if (self.selected) {
-        self.imageView.image = [self imageForState:UIControlStateSelected];
-    } else {
-        self.imageView.image = [self imageForState:UIControlStateNormal];
-    }
-}</code></pre>
-
-<p>tips：所有有forState参数的接口都有类似的问题，遇到同样的问题也可以参考这种方法。</p>
+				<h1>新博客正式上线</h1>
+				<p class="date">2013年 08月 19日</p>
+				<p>这是一个用jekyll和github pages来搭建的个人小博客。</p>
+<p>由于之前的博客zhoonchen.com空间满了，再加上平时没怎么去打理它，所以干脆就废弃掉了。后来发现了github pages，查了一下资料后，发现还挺不错的。可以用jekyll来生成静态页面（正好是前端擅长的东东），博主有一定的自定义空间和管理权利；也不用像wordpress一样繁琐，github会为你做很多管理工作，最重要的是，免费提供服务器。所以决定用它来做个人博客玩玩。</p>
+<h2>博客目的</h2>
+<ul>
+	<li>纪录生活中发生的一些有意义的事情；</li>
+	<li>学习和分享知识，包括：前端，iOS，或者一些其他IT技术； </li>
+	<li>这个博客本身就是一个项目，要长期来维护这个项目，强迫自己不偷懒；</li>
+</ul>
+<p>目前可以通过 http://zhoon.github.io/ 这个地址来访问我的新博客。</p>
+<p>ps：好吧，其实这篇文章只是测试而已，嘻嘻！</p>
 
 			</div>
 

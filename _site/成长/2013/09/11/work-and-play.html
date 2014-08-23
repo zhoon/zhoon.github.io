@@ -6,7 +6,7 @@
 		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
 		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>UIButton中setImage:forState接口的小问题</title>
+		<title>认真地工作，认真地玩</title>
 		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
 	</head>
@@ -33,30 +33,15 @@
 
 			<!-- blog content -->
 			<div class="blog-content blog-post">
-				<h1>UIButton中setImage:forState接口的小问题</h1>
-				<p class="date">2014年 06月 21日</p>
-				<pre>此问题为团队项目中遇到的并由团队成员归纳总结，我这里用文章的形式记载总结并且分享给其他遇到同样问题的朋友参考。我们欢迎不同的想法和更多的讨论，有什么问题直接在下面评论回复。</pre>
+				<h1>认真地工作，认真地玩</h1>
+				<p class="date">2013年 09月 11日</p>
+				<p>在我的印象中，我从很小就有这么一个习惯：上学的时候，不管遇到什么问题，如果当时没有足够的时间解决，那我一般我会把这个问题留到周末花一段时间来解决。虽然说我最后可能在周末解决了这个问题，但是当别的同学在玩的时候，我却在埋头苦逼想办法解决问题。而且因为是过去的问题了，所以一般印象就不会很深刻，所以需要再花一些时间来熟悉问题。这样造成的影响是：同样解决了问题，但是我花的时间却比别人长。所以原本好学的品质瞬间被秒杀。其实这还不是重点。重点是，别人学习的时候我在学习，别人玩的时候我还是在学习，这不是坑爹么！</p>
 
-<p>我们知道UIButton的setImage:forState接口是用来为button设置图片用的，其中后面的forState参数就是按钮的不同状态，也就是说为按钮的不同状态设置图片。常见的forState参数有；UIControlStateNormal、UIControlStateHighlighted、UIControlStateSelected、UIControlStateDisabled这几种，也就是常态、高亮、选择、禁止这几种状态。</p>
+<p>问题出在哪呢，其实问题出在：我没有认真的学习，认真的玩。遇到问题的时候，我没有及时想办法解决，而是偷懒拖到周末才找时间解决，这是没有认真学习的表现。周末是放松的时间，我却在苦逼解决问题，既失去了接触其他新东西的机会又享受不到玩的乐趣，亏大了。</p>
 
-<h2 id="section">项目中发现的问题：</h2>
+<p>现在毕业出来工作了，工作上和学习上应该是差不多的，会遇到各种各样的问题。但是我现在要做的是，改变以前的习惯，我不能把所有工作上的问题都留到周末解决。平时工作的时候，要全心投入，遇到问题及时解决。到了周末，工作就先放一边，去做一些比较轻松的事情或者锻炼一下身体。最近李开复生病的消息传开来后，很多人才明白再好的工作，也比不上身边的甚至许久都没联系过的亲人或朋友，这里面有甚多东西值得去思考。</p>
 
-<p>1，如果只是设置了UIControlStateNormal这种状态，那么其他的状态系统会默认给你设置UIControlStateNormal状态的image；</p>
-
-<p>2，UIControlStateSelected和UIControlStateDisabled状态貌似存在冲突，也就是说，如果当前是selected状态，那么如果此时你调用setEnabled接口设置为NO，那么按钮会置灰，并且image会变成normal状态的image，而不是selected状态的image，通过打断点发现，进入setEnabled的时候，图片还是selected状态的图片，但是过了super setEnabled之后，图片就变成了normal状态的图片了，所以这里不知道这种冲突是苹果本身设计就如此，还是这是一个bug。</p>
-
-<p>如果此时有一个需求，就是setEnabled的时候，我不想要图片变为normal状态的图片再置灰色，而是保持selected状态的图片并且置灰色。那该怎么办呢？我的做法是在基类里重写setEnabled接口，如下：</p>
-<pre><code>- (void)setEnabled:(BOOL)enabled
-{
-    [super setEnabled:enabled];
-    if (self.selected) {
-        self.imageView.image = [self imageForState:UIControlStateSelected];
-    } else {
-        self.imageView.image = [self imageForState:UIControlStateNormal];
-    }
-}</code></pre>
-
-<p>tips：所有有forState参数的接口都有类似的问题，遇到同样的问题也可以参考这种方法。</p>
+<p>总之，我们要认真工作，认真生活，多关心和珍惜身边的一些人和事。</p>
 
 			</div>
 
