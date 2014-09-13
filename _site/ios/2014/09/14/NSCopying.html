@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
+		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>理解NSCopying和NSMutableCopying</title>
+		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
+	</head>
+	<body>
+		<!-- blog maim -->
+		<div class="blog-main">
+		
+			<!-- blog content-->
+			<div class="blog-topbar">
+	<a href="/" class="blog-top-title">粽</a>
+	<!--
+	<div class="blog-items">
+		<ul>
+			<li><a href="/">博客首页</a></li>
+			<li><a href="javascript:;">文章分类</a></li>
+			<li><a href="/articalCollect.html">文章收集</a></li>
+			<li><a href="javascript:;">友情链接</a></li>
+			<li><a href="javascript:;">关于我</a></li>
+		</ul>
+	</div>
+	-->
+</div>
+
+
+			<!-- blog content -->
+			<div class="blog-content blog-post">
+				<h1>理解NSCopying和NSMutableCopying</h1>
+				<p class="date">2014年 09月 14日</p>
+				<p>NSCopying本质上就是一个协议，这个协议只有一个方法：copyWithZone:zone，NSMutableCopying也是类似的，只有一个方法是：mutableCopyWithZone:zone，想要理解NSCopying的具体作用，我们可以先看看下面一个例子。</p>
+
+<p>假如我们有个Person的类，这个类有一个username的属性，现在我们先初始化一个Person的实例person1，在某些时候，我们定义了一个Person的实例person2并把person1赋值给它，此时再修改person2的username属性，即下面这样：</p>
+
+<p>Person *person1 = [[Person alloc] init];<br />
+person1.username = @&#8221;zhoon&#8221;;<br />
+&#8230;&#8230;<br />
+Person *person2 = person1;<br />
+person2.username = @&#8221;chen&#8221;;</p>
+
+<p>这个时候我们会发现，person1的username也变成了“chen”，也就是改变person的属性同时也会作用在person1上面。之所以会出现这样的问题，我们可以打log看看，会发现person2的内存地址跟person1是一样的，也就是说person1和person2其实指向的是同一个对象，所以改变person2的username其实也就是改变了person1。显然这样的情况比不是我们希望发生的。</p>
+
+<p>我们希望的是得到一个person对象的副本，所以我们会用copy：Person *person2 = []person1 copy]，这样看似没有什么问题，一运行发现crash了，悲剧。看log发现错误是说Person类没有找到copyWithZone:zone方法。</p>
+
+<p>先说说copy，只要是调了copy来复制一个对象的副本，他就会去找这个类中的copyWithZone:zone方法，然后返回一个Person的实例，也就是副本。所以若想使某个类支持拷贝的功能，只需要声明该类遵从NSCopying协议，并实现其中的copyWithZone:zone方法即可。做了上面这些工作，重新按照上面的代码运行，这个时候我们打log会发现，person1和person2的内存地址不一样了，也就是一个Person的副本产生了，此时无论这么修改person2，也不会影响到person1了。</p>
+
+<p>类似的例子，我们可以看看系统的NSString，在xcode中查看他的头文件可以发现，NSString遵从了NSCopying协议，我们看下下面的代码：</p>
+
+<p>NSString *s1 = @&#8221;zhoon&#8221;;<br />
+NSString *s2 = [s1 copy];</p>
+
+<p>按照上面的说法，这里s2是copy过来的，所以修改s2是不会影响到s1的，但是问题是，我们打log看到s1和s2的内存地址是一样的，奇怪，上面不是说copy两个对象的内存地址会不一样的吗？嗯，理论确实是这样的，只不过苹果对NSString的copy做了优化，还是指向同一个内存地址，但是也不会互相影响。因为这里跟上面还是有点差别的，想想看，修改s2的值，不就是直接把s2指向新的地址了吗？是不会影响到s1指向的值的，那何必多占用一个内存呢？而上面的person2我们只是修改他的一个属性，所以是不会自动创建一个新的person对象的。所以上面的代码就跟下面的效果是一样的：</p>
+
+<p>NSString *s1 = @&#8221;zhoon&#8221;;<br />
+NSString *s2 = s1;</p>
+
+<p>接下来看看NSMutableCopying，这个其实跟NSCopying是同一个原理，在调用mutableCopy的时候会走到这个方法来索取一个新对象。至于他们两个的区别主要是用来区分浅拷贝和深拷贝。</p>
+
+<p><strong>浅拷贝:只复制对象本身,对象里的属性,包含的对象不做拷贝;</strong><br />
+<strong>深拷贝:即复制对象本身,对象里的包含对象,属性也都复制.</strong></p>
+
+<p>即你需要像下面这样实现这两个方法；</p>
+
+<pre><code>-(id)copyWithZone:(NSZone *)zone  
+{  
+    //浅拷贝的实现  
+    Person *person = [[[self class] allocWithZone:zone] init];  
+    person.username = _username;
+}</code></pre>
+
+<pre><code>-(id)mutableCopyWithZone:(NSZone *)zone  
+{  
+    //深拷贝的实现  
+    Person *person = [[[self class] allocWithZone:zone] init];  
+    person.username = [_username copy];
+}</code></pre>
+
+<p>注意：<br />
+<strong>1、Foundation类支持copy和mutableCopy，默认为浅拷贝，这也就解释了刚才NSString为啥copy之后还是跟原来的NSString内存地址一样<strong><br />
+<strong>2、自己定义的类默认为深拷贝，也就是本身和其属性都使用了新的对象，而不是指向原来的对象内存，出发自己在方法里面指定为浅拷贝，像上面的copyWithZone:zoon方法<strong><br />
+<strong>3、非NSObject类或者子类直接赋值即可，无需考虑浅拷贝或者深拷贝<strong></strong></strong></strong></strong></strong></strong></p>
+
+
+			</div>
+
+			<!-- blog comments -->
+			<div class="blog-comment">
+				<div id="disqus_thread"></div>
+			 	<script type="text/javascript">
+			     	 var disqus_shortname = 'zhoonchen'; // required: replace example with your forum shortname
+			      	 (function() {
+			         	 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			          	 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			          	 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			      	 })();
+		    	</script>
+			</div>
+
+			<!-- blog sidebar -->
+				<div class="blog-sidebar">
+	<!--<div class="blog-face-line"></div>-->
+	<div class="blog-face">
+		<a href="/">ZhoonChen</a>
+	</div>
+	<h3 class="blog-name">ZhoonChen</h3>
+	<div class="blog-info">zhoon(粽)，前端设计师，现就职于腾讯广州研发部。</div>
+	<div class="blog-items">
+		<ul>
+			<li><a href="/">博客首页</a></li>
+			<li><a href="/category.html">文章分类</a></li>
+			<li><a href="/articalCollect.html">文章收集</a></li>
+			<li><a href="/friend.html">友情链接</a></li>
+            <li><a href="/message.html">给我留言</a></li>
+			<li><a href="/about.html">关于粽子</a></li>
+		</ul>
+	</div>
+</div>
+
+
+			<!-- blog footer -->
+				<div class="blog-footer">
+    <p class="blog-copyright">© 2013 – 2014 ZhoonChen. Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and host by <a href="https://github.com/zhoon" target="_blank">Github</a>.</p>
+</div>
+
+		</div>
+			
+	</body>
+</html>
