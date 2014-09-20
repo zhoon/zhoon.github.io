@@ -84,7 +84,7 @@ NSString *s2 = s1;</p>
 
 <p>注意：<br />
 <strong>1、Foundation类支持copy和mutableCopy，默认为浅拷贝，这也就解释了刚才NSString为啥copy之后还是跟原来的NSString内存地址一样<strong><br />
-<strong>2、自己定义的类默认为深拷贝，也就是本身和其属性都使用了新的对象，而不是指向原来的对象内存，出发自己在方法里面指定为浅拷贝，像上面的copyWithZone:zoon方法<strong><br />
+<strong>2、自己定义的类默认为深拷贝，也就是本身和其属性都使用了新的对象，而不是指向原来的对象，除非自己在方法里面指定为浅拷贝，像上面的copyWithZone:zoon方法<strong><br />
 <strong>3、非NSObject类或者子类直接赋值即可，无需考虑浅拷贝或者深拷贝<strong></strong></strong></strong></strong></strong></strong></p>
 
 

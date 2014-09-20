@@ -21,6 +21,7 @@
 
 .blog-post{color:#000;line-height:1.8;font-size:16px;}
 .blog-post h2{margin:20px 0 10px;}
+.blog-post img{max-width: 100%;}
 .blog-post p{margin:15px 0;word-wrap: break-word; word-break: break-all;}
 .blog-post ul{padding:5px 0;}
 .blog-post ul li{list-style:disc inside none;color:rgba(0,0,0,0.4);margin-left:20px;}

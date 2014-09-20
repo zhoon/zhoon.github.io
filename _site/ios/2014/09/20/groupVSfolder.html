@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="keyword" content="zhoon,zhoonchen,blog,front-end,iOS,life">
+		<meta name="description" content="a blog of zhoonchen to share infomation of front-end, iOS and life.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>iOS项目中group和folder的区别</title>
+		<link rel="stylesheet" type="text/css" href="/style/base.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/style/page.css" media="screen">
+	</head>
+	<body>
+		<!-- blog maim -->
+		<div class="blog-main">
+		
+			<!-- blog content-->
+			<div class="blog-topbar">
+	<a href="/" class="blog-top-title">粽</a>
+	<!--
+	<div class="blog-items">
+		<ul>
+			<li><a href="/">博客首页</a></li>
+			<li><a href="javascript:;">文章分类</a></li>
+			<li><a href="/articalCollect.html">文章收集</a></li>
+			<li><a href="javascript:;">友情链接</a></li>
+			<li><a href="javascript:;">关于我</a></li>
+		</ul>
+	</div>
+	-->
+</div>
+
+
+			<!-- blog content -->
+			<div class="blog-content blog-post">
+				<h1>iOS项目中group和folder的区别</h1>
+				<p class="date">2014年 09月 20日</p>
+				<p>xcode工程目录里面，有时你会发现2个不同颜色的文件夹，一种是蓝色的(叫folder)，一种是黄色的(叫group)，最常见的是黄色的。group一般只在你的工程中是文件夹的形式，但是在本地的目录中还是以散乱的形式放在一起的，除非你是从外部以整个文件夹的形式引用进来的。folder只能作为资源，整个引用进项目，不能编译代码，也就是说，以folder形式引用进来的文件，是不会被放入编译文件列表里面的。如下图，上面的checkbox，如果勾上了，那么源文件就会被copy一份到项目内，这个一般要勾上的。下面的radio，就要选择决定你这个拉进来的文件夹是要以group还是folder的形式存在。</p>
+
+<p><img src="/img/artical/groupAndFolder.png" alt="" /></p>
+
+<h1 id="group">Group</h1>
+<p>如果xcode中使用的是group，那么Xcode自动帮你存储group里面的每一个单独的文件的一个引用，这些引用存储在project.pbxproj文件里面(用命令行打开这个文件就可以清楚的看出来了)，也就是相当与有一个指针指向了这个图片。</p>
+
+<h2 id="section">缺点</h2>
+<p>1、过多使用group会明显使得project.pbxproj文件变得更加的庞大和复杂，特别是在有多个target的情况下，需要复制多份引用的文件。在此基础上也会提高svn同步冲突的概率。</p>
+
+<p>2、因为使用group，所以Xcode里面项目的目录结构可能跟项目所在硬盘上的目录结果不一样，因为group只是一个虚拟的文件夹，硬盘上不一定存在对应的文件夹。这就会导致给人疑惑或者给项目的维护带来不便。</p>
+
+<p>3、如果你在Xcode移动某个group里面的文件，实际项目里面的文件位置是没有移动的，而是保持第一次拉进来的位置；如果你在硬盘的项目下修改某个group里面文件的名字或者移动到其他group或folder，则xcode会报错，引用中找不到这个文件。</p>
+
+<h2 id="section-1">优点</h2>
+<p>build app的时候，xcode将所有group文件夹层级都展开放在最高层级的bundle下，也就是说所有group里的文件都是同一个层级的，所以你代码里面引用某个文件就不需要写整个文件的路径，只需要写文件名就好了。
+例如将：</p>
+<pre><code>[UIImage imageNamed:@"Resource/image/logo"];</code></pre>
+<p>替代为：</p>
+<pre><code>[UIImage imageNamed:@"logo"];</code></pre>
+<p>但这也意味着你需要处理文件命名冲突的问题。</p>
+
+<h1 id="folder">Folder</h1>
+<p>folder相对比较容易理解，你可以很容易在xcode的项目中找到他们，黄色的文件夹是group，而蓝色的是folder。</p>
+
+<h2 id="section-2">优点</h2>
+<p>1、project.pbxproj仅仅是对folder这个文件夹做了引用，文件夹里面的文件或者子文件夹，都是自动引入到xcode项目里面的，并没有引用。也就是说project.pbxproj文件变得更小更简单。</p>
+
+<p>2、如果删除，重命名硬盘项目上某个folder里面的文件，那么xcode会自动帮你更新改变的文件，文件管理变得更容易。</p>
+
+<p>3、xcode上的folder文件夹层级跟硬盘上的文件夹层级是一致的，所以就没有跟group一样的疑惑。</p>
+
+<p>4、不需要担心命名冲突，因为不同folder里面可以有同一个名字相同的文件。</p>
+
+<h2 id="section-3">缺点</h2>
+<p>代码里引用文件的时候需要文件的路径，只是写文件名是引用不到文件的，这一点跟group正好相反。</p>
+
+<h1 id="section-4">总结</h1>
+<p>综上所述，一般的文件，我们还是需要以group的形式存在的，否则就无法参与编译。而一些无需编译的资源，例如某些文档之类的文件可以考虑folder，注意这里的图片资源要用group的形式，因为我们所用的图片都是直接用文件名来引用的，这样方便很多。其实使用group，然后本地文件管理好一点，还是没有什么问题的。</p>
+
+
+			</div>
+
+			<!-- blog comments -->
+			<div class="blog-comment">
+				<div id="disqus_thread"></div>
+			 	<script type="text/javascript">
+			     	 var disqus_shortname = 'zhoonchen'; // required: replace example with your forum shortname
+			      	 (function() {
+			         	 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			          	 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			          	 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			      	 })();
+		    	</script>
+			</div>
+
+			<!-- blog sidebar -->
+				<div class="blog-sidebar">
+	<!--<div class="blog-face-line"></div>-->
+	<div class="blog-face">
+		<a href="/">ZhoonChen</a>
+	</div>
+	<h3 class="blog-name">ZhoonChen</h3>
+	<div class="blog-info">zhoon(粽)，前端设计师，现就职于腾讯广州研发部。</div>
+	<div class="blog-items">
+		<ul>
+			<li><a href="/">博客首页</a></li>
+			<li><a href="/category.html">文章分类</a></li>
+			<li><a href="/articalCollect.html">文章收集</a></li>
+			<li><a href="/friend.html">友情链接</a></li>
+            <li><a href="/message.html">给我留言</a></li>
+			<li><a href="/about.html">关于粽子</a></li>
+		</ul>
+	</div>
+</div>
+
+
+			<!-- blog footer -->
+				<div class="blog-footer">
+    <p class="blog-copyright">© 2013 – 2014 ZhoonChen. Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and host by <a href="https://github.com/zhoon" target="_blank">Github</a>.</p>
+</div>
+
+		</div>
+			
+	</body>
+</html>
