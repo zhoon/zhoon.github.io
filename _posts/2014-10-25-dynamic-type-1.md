@@ -45,11 +45,12 @@ iOS提供了一个UIContentSizeCategoryDidChangeNotification的消息通知，�
 - (void)handleContentSizeCategoryDidChanged:(NSNotification *)notification 
 {
    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-   [self.view setNeedsLayout]; // 注意这里需要调用setNeedsLayout然后在layoutSubView里面更新textLabel的frame
+   // 注意这里需要调用setNeedsLayout然后在layoutSubview或者viewDidLayoutSubview里面更新textLabel的frame
+   [self.view setNeedsLayout]; 
 }
 </code></pre>
 
-好了，动态字体就这样完成了。总结起来就是这样的：注册一个DynamicType的消息通知，然后在系统字体大小改变的时候来update界面上需要支持DynamicType的UIKit的font，最后在layout一下界面的布局即可。实现的效果我们可以看看下面的效果图：
+好了，动态字体就这样完成了。总结起来就是这样的：注册一个DynamicType的消息通知，然后在系统字体大小改变的时候来update界面上需要支持DynamicType的UIKit的font，最后再layout一下界面的布局即可。实现的效果我们可以看看下面的效果图：
 
 ![](/img/artical/dynamictype2.png)
 
