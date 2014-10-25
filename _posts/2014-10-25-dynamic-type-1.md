@@ -10,7 +10,7 @@ DynamicType是属于Text Kit下面的一个特性。Text Kit是建立在Core Tex
 
 今天这篇文章会先介绍DynamicType的简单使用，后面会再写文章介绍DynamicType的进阶使用。想要使用DynamicType来提升app的体验很容易只需要按照下面的步骤来，几分钟搞定：
 
-#设置UIkit的font属性
+##设置UIkit的font属性
 
 iOS7的UIFont提供了一个接口preferredFontForTextStyle:返回一个UIFont的实例，用来设置UIkit的font属性。其参数是一个UIFontTextStyle的NSString对象，有下面六个值：
 
@@ -27,7 +27,9 @@ UIFontTextStyleCaption2
 textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 </code></pre>
 
-#接收DynamicType的NSNotificationCenter
+tips：UIFontTextStyle会默认对应一个字号，不同的UIFontTextStyle默认的初始字号不同。
+
+##接收DynamicType的NSNotificationCenter
 
 上一步中我们设置了UILabel的font，但是运行之后在设置里面改变系统的字体大小，发现UILabel并没有变化，这是肯定的，因为你没有在系统字体update之后去update你的font，你的程序只是单纯在初始化的时候设置了一次font是不够，我们需要在系统设置字体大小的时候动态更新我们app的字体。
 
