@@ -40,10 +40,10 @@
 <p>假如我们有个Person的类，这个类有一个username的属性，现在我们先初始化一个Person的实例person1，在某些时候，我们定义了一个Person的实例person2并把person1赋值给它，此时再修改person2的username属性，即下面这样：</p>
 
 <p>Person *person1 = [[Person alloc] init];<br />
-person1.username = @&#8221;zhoon&#8221;;<br />
-&#8230;&#8230;<br />
+person1.username = @”zhoon”;<br />
+……<br />
 Person *person2 = person1;<br />
-person2.username = @&#8221;chen&#8221;;</p>
+person2.username = @”chen”;</p>
 
 <p>这个时候我们会发现，person1的username也变成了“chen”，也就是改变person的属性同时也会作用在person1上面。之所以会出现这样的问题，我们可以打log看看，会发现person2的内存地址跟person1是一样的，也就是说person1和person2其实指向的是同一个对象，所以改变person2的username其实也就是改变了person1。显然这样的情况比不是我们希望发生的。</p>
 
@@ -53,12 +53,12 @@ person2.username = @&#8221;chen&#8221;;</p>
 
 <p>类似的例子，我们可以看看系统的NSString，在xcode中查看他的头文件可以发现，NSString遵从了NSCopying协议，我们看下下面的代码：</p>
 
-<p>NSString *s1 = @&#8221;zhoon&#8221;;<br />
+<p>NSString *s1 = @”zhoon”;<br />
 NSString *s2 = [s1 copy];</p>
 
 <p>按照上面的说法，这里s2是copy过来的，所以修改s2是不会影响到s1的，但是问题是，我们打log看到s1和s2的内存地址是一样的，奇怪，上面不是说copy两个对象的内存地址会不一样的吗？嗯，理论确实是这样的，只不过苹果对NSString的copy做了优化，还是指向同一个内存地址，但是也不会互相影响。因为这里跟上面还是有点差别的，想想看，修改s2的值，不就是直接把s2指向新的地址了吗？是不会影响到s1指向的值的，那何必多占用一个内存呢？而上面的person2我们只是修改他的一个属性，所以是不会自动创建一个新的person对象的。所以上面的代码就跟下面的效果是一样的：</p>
 
-<p>NSString *s1 = @&#8221;zhoon&#8221;;<br />
+<p>NSString *s1 = @”zhoon”;<br />
 NSString *s2 = s1;</p>
 
 <p>接下来看看NSMutableCopying，这个其实跟NSCopying是同一个原理，在调用mutableCopy的时候会走到这个方法来索取一个新对象。至于他们两个的区别主要是用来区分浅拷贝和深拷贝。</p>
